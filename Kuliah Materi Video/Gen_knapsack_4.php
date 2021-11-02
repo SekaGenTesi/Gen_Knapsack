@@ -346,10 +346,10 @@ class Mutation{
     }
 
     function generateMutation($valueOfGen){
-        if($valueOfGen===0){
+        if($valueOfGen===0){ //jika nilai value of gen bernilai 0 return 1
             return 1;
         }
-        else{
+        else{//jika tidak maka retuen 0
             return 0;
         }
     }
