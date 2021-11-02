@@ -332,6 +332,7 @@ class Mutation{
     }
 
     function calculateMutationRate(){
+        //digunakan untuk menghitung mutation rate
         return 1/(new Individu())->countNumberOfGen();
     }
 
