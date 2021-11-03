@@ -317,11 +317,11 @@ class Crossover{
 
 class Randomizer{
     static function getRandomIndexOfGen(){
-        return rand(0,(new Individu())->countNumberOfGen()-1);
+        return rand(0,(new Individu())->countNumberOfGen()-1);//me-return nilai random dari 0 sampai jumlah gen - 1
     }
 
     static function getRandomIndexOfIndividu(){
-        return rand(0,Parameters::POPULATION_SIZE - 1);
+        return rand(0,Parameters::POPULATION_SIZE - 1);//me-return nilai random dari 0 sampai jumlah inidividu pada populasi - 1
     }
 }
 
