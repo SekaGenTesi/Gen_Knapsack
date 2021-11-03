@@ -332,11 +332,12 @@ class Mutation{
     }
 
     function calculateMutationRate(){
-        //digunakan untuk menghitung mutation rate
+        //digunakan untuk menghitung mutation rate dengan menggunakan menghitung 1 / jumlah individu
         return 1/(new Individu())->countNumberOfGen();
     }
 
     function calculateNumOfMutation(){
+        //me-return nilai mutationrate * jumlah individu untul menghitung jumlah mutasi
         return round($this -> calculateMutationRate() * Parameters::POPULATION_SIZE);
     }
 
@@ -347,10 +348,10 @@ class Mutation{
     }
 
     function generateMutation($valueOfGen){
-        if($valueOfGen===0){ //jika nilai value of gen bernilai 0 return 1
+        if($valueOfGen===0){ //jika nilai value of gen bernilai 0 akan me-return 1 / mengubah nilai gen menjadi 1
             return 1;
         }
-        else{//jika tidak maka retuen 0
+        else{//jika tidak maka return 0 / mengubah nilai gen menjadi 0
             return 0;
         }
     }
@@ -362,25 +363,27 @@ class Mutation{
 
 
         if($this->isMutation()){ //memanggil fungsi isMutation jika bernilai true maka fungsi if akan dijalankan 
-            for($i=0 ; $i <= $this->calculateNumOfMutation()-1;$i++){
-                $indexOfIndividu = Randomizer::getRandomIndexOfIndividu();
-                $indexofGen = Randomizer::getRandomIndexOfGen();
-                $selectedindividu = $this->population[$indexOfIndividu];
+
+            for($i=0 ; $i <= $this->calculateNumOfMutation()-1;$i++){//melakukan perulangan sebanyak nilai return dari calculateNumOfMutation - 1
+                
+                $indexOfIndividu = Randomizer::getRandomIndexOfIndividu();//mengambil nilai dari fungsi getRandomIndexOfIndividu
+                $indexofGen = Randomizer::getRandomIndexOfGen(); //mengambil nilai dari fungsi getRandomIndexOfGen
+                $selectedindividu = $this->population[$indexOfIndividu]; //mengambil nilai array dari variabel population / mengambil data populasi
 
 
-                echo"<br> Individu ke-";
+                echo"<br> Individu ke-";//urutan index dari individu yang terpilih untuk dimutasi
                 print_r($indexOfIndividu);
-                echo"<br> Before Mutation: <br>";
+                echo"<br> Before Mutation: <br>";//output gen-gen dari individu yang terpilih untuk dimutasi
                 print_r($selectedindividu);
 
-                echo"<br> Letak Gen yang dimutasi <br>";
+                echo"<br> Letak Gen yang dimutasi <br>";//letak gen yang akan dimutasi pada gen-gen individu yang terpilih
                 print_r($indexofGen);
 
-                $valueOfGen = $selectedindividu[$indexofGen];
-                $mutatedGen = $this->generateMutation($valueOfGen);
-                $selectedindividu[$indexofGen] = $mutatedGen;
+                $valueOfGen = $selectedindividu[$indexofGen];//mengambil data invidu yang terpilih
+                $mutatedGen = $this->generateMutation($valueOfGen);//melaukan mutasi dengan memanggil fungsi 
+                $selectedindividu[$indexofGen] = $mutatedGen;//memasukan hasil mutasi ke gen yang akan diubah
 
-                echo"<br> After Mutation: <br>";
+                echo"<br> After Mutation: <br>";//hasil output individu yang telah dilakukan mutasi
                 print_r($selectedindividu);
                 echo"<br>";
 
@@ -414,17 +417,18 @@ echo"<p></p>";
 
 //(new Mutation($population))->mutation();
 $mutation = new Mutation($population);//membuat objek baru pada class mutation
-if($mutation->mutation()){
-    $mutationOffSprings = $mutation->mutation();
-    echo '<br><br>Mutation offspring <br>';
+if($mutation->mutation()){//jika fungsi mutation menghasilkan output maka fungsi dibawah dijalankan 
+
+    $mutationOffSprings = $mutation->mutation();// mengambil salah satu individu yang telah dilakukan mutasi pada fungsu mutation
+    echo '<br><br>Mutation offspring <br>';//output individu tersebut
     print_r($mutationOffSprings);
     echo"<p></p>";
     foreach($mutationOffSprings as $mutationOffSprings){
-        $crossoverOffspring[] = $mutationOffSprings;
+        $crossoverOffspring[] = $mutationOffSprings;//mengambil data individu-individu yang telah dimutasi
     }
 }
 
-echo 'Mutation Offsprings <br>';
+echo 'Mutation Offsprings <br>';//output seluruh individu ditambah individu yang telah dimutasi
 print_r($crossoverOffspring);
 // $individu = new individu;
 // print_r($individu -> createRandomIndividu());
