@@ -4,7 +4,7 @@ Class Parameters{ // membuat class untuk menyimpan atribut-atribut
     const FILE_NAME = 'produk.txt';
     const COLUMNS = ['item', 'price'];
     const POPULATION_SIZE = 10;
-    const BUDGET = 280000;
+    const BUDGET =  280000;
     const STOPING_VALUE = 30000;
 }
 
@@ -234,8 +234,8 @@ class Fitness{
 $initialPopulation = new Population; //membuat objek baru pada class Population dengan nama $initialpopulation
 $population = $initialPopulation -> createRandomPopulation();
 
-$fitness = new Fitness;
-$fitness -> fitnessEvaluation($population);
+    $fitness = new Fitness;
+    $fitness -> fitnessEvaluation($population);
 
 // $individu = new individu;
 // print_r($individu -> createRandomIndividu());

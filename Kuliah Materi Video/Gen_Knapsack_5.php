@@ -122,7 +122,7 @@ class Fitness{
 
     function isFound($fits){
         $countedMaxItem = array_count_values(array_column($fits,'numberOfSelectedItem'));
-        print_r($countedMaxItem);
+        //print_r($countedMaxItem);
         echo '<br>';
         $maxItem = max(array_keys($countedMaxItem));
         echo $maxItem;
@@ -156,7 +156,7 @@ class Fitness{
             echo 'Individu-'. $listOfindividuKey. '<br>';
             foreach ($listOfIndividu as $individuKey => $binaryGen){
                 echo $binaryGen.'&nbsp;&nbsp';
-                print_r($catalogue -> product()[$individuKey]);
+                //print_r($catalogue -> product()[$individuKey]);
                 echo '<br>';
             }
             $fitnessValue = $this->calculateFitnessValue($listOfIndividu); 
@@ -170,7 +170,7 @@ class Fitness{
                     'numberOfSelectedItem' => $numberOfSelectingItem,
                     'fitnessValue' => $fitnessValue
                 ];
-                print_r($fits); 
+                //print_r($fits); 
             }
             else{
                 echo '(Not Fit)';
@@ -370,19 +370,19 @@ class Mutation{
 
 
                 echo"<br> Individu ke-";//urutan index dari individu yang terpilih untuk dimutasi
-                print_r($indexOfIndividu);
+                //print_r($indexOfIndividu);
                 echo"<br> Before Mutation: <br>";//output gen-gen dari individu yang terpilih untuk dimutasi
-                print_r($selectedindividu);
+               // print_r($selectedindividu);
 
                 echo"<br> Letak Gen yang dimutasi <br>";//letak gen yang akan dimutasi pada gen-gen individu yang terpilih
-                print_r($indexofGen);
+               // print_r($indexofGen);
 
                 $valueOfGen = $selectedindividu[$indexofGen];//mengambil data invidu yang terpilih
                 $mutatedGen = $this->generateMutation($valueOfGen);//melaukan mutasi dengan memanggil fungsi 
                 $selectedindividu[$indexofGen] = $mutatedGen;//memasukan hasil mutasi ke gen yang akan diubah
 
                 echo"<br> After Mutation: <br>";//hasil output individu yang telah dilakukan mutasi
-                print_r($selectedindividu);
+                //print_r($selectedindividu);
                 echo"<br>";
 
                 $ret[] = $selectedindividu;
@@ -394,7 +394,65 @@ class Mutation{
 
 }
 
+class Selection{
 
+    function __construct($population, $combinedOffsprings){
+        $this -> population = $population;
+        $this -> combinedOffsprings = $combinedOffsprings;
+    }
+
+    function createTemporaryPopulation(){
+        foreach($this-> combinedOffsprings as $offspring){
+            $this->population[] = $offspring;
+        }
+
+        return $this->population;
+    }
+
+    function getVariabelValue($basePopulation, $fitTemporaryPopulation){
+        foreach($fitTemporaryPopulation as $val){
+            $ret[] = $basePopulation[$val[1]];
+        }
+        return $ret;
+    }
+
+    function sortFitTemporaryPopulation(){
+        $tempPopulation = $this->createTemporaryPopulation();
+        $fitness = new Fitness;
+
+        foreach ($tempPopulation as $key => $individu){
+            $fitnessValue = $fitness->calculateFitnessValue($individu);
+            if($fitness->isFit($fitnessValue)){
+                $fitTemporaryPopulation[] = [
+                    $fitnessValue,
+                    $key
+                ];
+            }
+        }
+        rsort($fitTemporaryPopulation);
+        $fitTemporaryPopulation = array_slice($fitTemporaryPopulation,0,Parameters::POPULATION_SIZE);
+        foreach($fitTemporaryPopulation as $key => $val){
+            echo"<br>";
+            print_r($val);
+        }
+        return $this->getVariabelValue($tempPopulation,$fitTemporaryPopulation);
+    }
+
+    function selectingIndividus(){
+       $selected =  $this->sortFitTemporaryPopulation();
+       echo'<p></p>';
+       $x=1;
+       foreach ($selected as $key => $val){
+           echo'<br>';
+           echo $x.'. ';
+           print_r($val);
+           $x++;
+       }
+       
+    }
+
+
+}
 // $katalog = new Catalogue;
 // // print_r($katalog -> product($parameters));
 // $katalog -> product($parameters);
@@ -402,14 +460,14 @@ class Mutation{
 $initialPopulation = new Population;
 $population = $initialPopulation -> createRandomPopulation();
 
-//$fitness = new Fitness;
-//$fitness -> fitnessEvaluation($population);
+$fitness = new Fitness;
+$fitness -> fitnessEvaluation($population);
 
 $crossover = new Crossover($population);//membuat objek baru pada class Crossover 
 $crossoverOffspring= $crossover->crossover();
 
-echo'Crossover Offsrping: <br>';
-print_r($crossoverOffspring);
+//echo'Crossover Offsrping: <br>';
+//print_r($crossoverOffspring);
 
 echo"<p></p>";
 
@@ -426,7 +484,12 @@ if($mutation->mutation()){//jika fungsi mutation menghasilkan output maka fungsi
     }
 }
 
-echo 'Mutation Offsprings <br>';//output seluruh individu ditambah individu yang telah dimutasi
-print_r($crossoverOffspring);
+//echo 'Mutation Offsprings <br>';//output seluruh individu ditambah individu yang telah dimutasi
+//print_r($crossoverOffspring);
+$fitness->fitnessEvaluation($crossoverOffspring);
+
+$selection = new Selection($population,$crossoverOffspring);
+$selection -> selectingIndividus();
+
 // $individu = new individu;
 // print_r($individu -> createRandomIndividu());
