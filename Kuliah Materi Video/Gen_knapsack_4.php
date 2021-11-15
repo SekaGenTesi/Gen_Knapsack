@@ -4,7 +4,7 @@ Class Parameters{
     const FILE_NAME = 'produk.txt';
     const COLUMNS = ['item', 'price'];
     const POPULATION_SIZE = 30;
-    const BUDGET = 280000;
+    const BUDGET =280000;
     const STOPING_VALUE = 10000;
     const CROSSOVERRATE = 0.8;//digunakan untuk menyaring individu yang terpilih menjadi individu parent
 }
