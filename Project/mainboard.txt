@@ -1,0 +1,20 @@
+BIOSTAR Tb360-btc PRO,3899000,mainboard
+MSI MAG B560M Mortar,2100000,mainboard
+MSI MAG B560M Mortar Wi-Fi,2340000,mainboard
+ASUS ROG STRIX Z590-E Gaming,4300000,mainboard
+ASUS ROG STRIX Z590-F Gaming,5148000,mainboard
+ASRock Fatal1ty X99 Taichi (Intel X99, DDR4, PCI-Exp 16x),3730000,mainboard
+MSI B365M Mortar (Intel B365, DDR4),1740000,mainboard
+ASRock Fatal1ty X99X Killer (Intel X99, DDR4, 3xPCI-Exp 16x),4440000,mainboard	
+MSI H270I Gaming Pro Carbon AC / MSI H270I GAMING PRO AC (Intel H270, DDR4),1770000,mainboard
+Asus X99-A (Intel X99, DDR4, 3xPCI-Exp 16x),4200000,mainboard	
+MSI H270M Mortar Arctic (Intel H270, DDR4),1790000,mainboard
+Asus X99 Sabertooth (Intel X99, DDR4, PCI-Exp 16x) / Asus Sabertooth X99,4250000,mainboard	
+Asus X99-A II (Intel X99, DDR4, PCI-Exp 16x),4445000,mainboard	
+Asus ROG STRIX X99 GAMING (Intel X99, DDR4, PCI-Exp 16x),4500000,mainboard	
+MSI Z170A PRO (Intel Z170A, DDR4),1910000,mainboard
+Gigabyte GA-X99-Ultra Gaming (Intel X99, DDR4, 4xPCI-Exp 16x),4980000,mainboard	
+MSI B360 Gaming Pro Carbon (Intel B360, DDR4),1995000,mainboard
+Gigabyte GA-X99-Gaming 5 / GA-X99 Gaming 5 (Intel X99, DDR4, 4xPCI-Exp 16x),5040000,mainboard	
+Gigabyte GA-X99-UD5 Wifi (Intel X99, DDR4, 4xPCI-Exp 16x),5620000,mainboard	
+MSI Z270A Pro / MSI Z270-A Pro (Intel H170, DDR4),2070000,mainboard

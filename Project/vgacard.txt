@@ -1,0 +1,20 @@
+iGame Geforce RTX 3060 Ti Ultra W OC LHR 8GB 256 Bit GDDR6,15200000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - Dual-V2 OC,11900000,vgacard	
+iGame Geforce RTX 3060 Ti bilibili E-sports Edition OC LHR 8GB 256 Bit GDDR6,15700000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - KO Gaming-V2 OC,12200000,vgacard	
+iGame Geforce RTX 3070 Ultra OC 8GB 256 Bit GDDR6,9200000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - TUF Gaming-V2 OC,12900000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - ROG Strix-V2 OC ,13400000,vgacard	
+iGame Geforce RTX 3070 Ultra OC-V 8GB 256 Bit GDDR6,16700000,vgacard
+Asus Geforce RTX 3060 Ti 8 GB 256 Bit GDDR6 - Dual Mini-V2,13800000,vgacard	
+iGame Geforce RTX 3070 Advanced OC-V LHR 8GB 256 Bit GDDR6,17100000,vgacard
+Asus Geforce RTX 3080 ROG Strix OC White Edition 10 GB 320 Bit GDDR6X,25900000,vgacard	
+Inno 3D Geforce GTX 1660 Twin X2 6 GB 192 Bit DDR5,6940000,vgacard
+Inno 3D Geforce GTX 1660 SUPER Twin X2 6 GB 192 Bit DDR6,9300000,vgacard
+Inno 3D Geforce GTX 1660 Ti Twin X2 6 GB 192 Bit DDR6,3930000,vgacard
+Asus Radeon RX 5600 XT Strix OC 6 GB 192 Bit DDR6,5950000,vgacard
+AMD Radeon Pro WX2100 2GB DDR5,2900000,vgacard	
+Gigabyte Geforce GTX 1660 SUPER OC 6 GB 192 Bit DDR6 (GV-N166SOC-6GD),8770000,vgacard
+AMD Radeon Pro WX3200 4GB DDR5,3550000,vgacard	
+Gigabyte Geforce GTX 1660 SUPER OC 6 GB 192 Bit DDR6 (OC GV-N166SOC-6GD),9900000,vgacard
+AMD Radeon Pro WX4100 4GB DDR5,5900000,vgacard

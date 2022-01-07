@@ -1,0 +1,100 @@
+AMD A8-7680,650000,processor
+AMD Ryzen 5 3600,3051000,processor
+AMD Ryzen 5 3600X,3551000,processor
+Intel Core i3-7350K 4.2Ghz – Cache 4MB,2350000,processor
+Intel Core i3-7300 4.0Ghz – Cache 4MB,2220000,processor
+Intel Core i3-7100 3.9Ghz – Cache 3MB,1665000,processor
+Intel Core i3-7100T 3.4Ghz – Cache 3MB,1605000,processor
+Intel Core i3-6100 3.7Ghz – Cache 3MB,1605000,processor
+Intel Core i3-6100 3.7Ghz – Cache 3MB,1550000,processor
+AMD Ryzen 7 3700X,4850000,processor
+AMD Ryzen 3 3200g,1680000,processor
+AMD Ryzen 5 3400g,2575000,processor
+Intel Core i7-7740X 4.3Ghz Up To 4.5Ghz – Cache 8MB,5270000,processor
+Intel Core i7-7820X 3.6Ghz Up To 4.3Ghz – Cache 11MB,9250000,processor
+Intel Core i7-7800X 3.5Ghz Up To 4.0Ghz – Cache 8.25MB,6000000,processor
+Intel Xeon E3-1276V3 3.6Ghz Cache 8MB,4975000,processor
+Intel Xeon E3-1241V3 3.5Ghz Cache 8MB,3895000,processor
+Intel Xeon E3-1231V3 3.3Ghz Cache 8MB,3920000,processor
+Intel Xeon E3-1230V3 3.3Ghz Cache 8MB,3805000,processor
+Intel Xeon E3-1225V3 3.2Ghz Cache 8MB,3020000,processor
+BIOSTAR Tb360-btc PRO,3899000,mainboard
+MSI MAG B560M Mortar,2100000,mainboard
+MSI MAG B560M Mortar Wi-Fi,2340000,mainboard
+ASUS ROG STRIX Z590-E Gaming,4300000,mainboard
+ASUS ROG STRIX Z590-F Gaming,5148000,mainboard
+ASRock Fatal1ty X99 Taichi (Intel X99 DDR4 PCI-Exp 16x),3730000,mainboard
+MSI B365M Mortar (Intel B365 DDR4),1740000,mainboard
+ASRock Fatal1ty X99X Killer (Intel X99 DDR4 3xPCI-Exp 16x),4440000,mainboard	
+MSI H270I Gaming Pro Carbon AC / MSI H270I GAMING PRO AC (Intel H270 DDR4),1770000,mainboard
+Asus X99-A (Intel X99 DDR4 3xPCI-Exp 16x),4200000,mainboard	
+MSI H270M Mortar Arctic (Intel H270 DDR4),1790000,mainboard
+Asus X99 Sabertooth (Intel X99 DDR4 PCI-Exp 16x) / Asus Sabertooth X99,4250000,mainboard	
+Asus X99-A II (Intel X99 DDR4 PCI-Exp 16x),4445000,mainboard	
+Asus ROG STRIX X99 GAMING (Intel X99 DDR4 PCI-Exp 16x),4500000,mainboard	
+MSI Z170A PRO (Intel Z170A DDR4),1910000,mainboard
+Gigabyte GA-X99-Ultra Gaming (Intel X99 DDR4 4xPCI-Exp 16x),4980000,mainboard	
+MSI B360 Gaming Pro Carbon (Intel B360 DDR4),1995000,mainboard
+Gigabyte GA-X99-Gaming 5 / GA-X99 Gaming 5 (Intel X99 DDR4 4xPCI-Exp 16x),5040000,mainboard	
+Gigabyte GA-X99-UD5 Wifi (Intel X99 DDR4 4xPCI-Exp 16x),5620000,mainboard	
+MSI Z270A Pro / MSI Z270-A Pro (Intel H170 DDR4),2070000,mainboard
+KINGSTON Memory Notebook 4GB DDR3 PC-12800 [KVR16LS11/4] (Merchant),300000,memori
+KINGSTON Memory PC 4GB DDR3 PC-12800 [HyperX Fury HX316C10FB/4] – Black,400000,memori
+KINGSTON Memory PC 8GB DDR4 PC-17000 [KVR21N15S8/8],510000,memori
+KINGSTON Memory PC 4GB DDR3 PC-12800 [HyperX Fury HX316C10F/4] – Blue,500000,memori
+KINGSTON Memory PC 2x 4GB DDR3 PC-15000 [HyperX Fury HX318C10FWK2/8],610000,memori
+KINGSTON Memory PC 2x 4GB DDR3 PC-15000 [HyperX Fury HX318C10FK2/8],617000,memori
+KINGSTON Memory PC 2x 4GB DDR4 [HyperX Fury HX421C14FBK2/8],750000,memori
+KINGSTON Memory PC 2x 4GB DDR3 PC-12800 [Value RAM KVR16N11S8K2/8],900000,memori
+KINGSTON Memory PC 2x 4GB DDR3 PC-12800 [HyperX KHX16C9B1RK2/8X],1000000,memori
+KINGSTON Memory PC 2x 8GB DDR3 PC-15000 [HyperX Fury HX318C10FK2/16],1080000,memori
+KINGSTON Memory PC 2x 8GB DDR3 PC-12800 [HyperX KHX16C10B1BK2/16X],1500001,memori
+KINGSTON Memory PC 16GB DDR4 PC-22400 [Predator (T2) HX428C14PB2K4/16] – Black,2300000,memori
+V-GEN Memory PC 4GB DDR3 PC-10600,500000,memori
+V-GEN Memory PC 8GB DDR3 Long-DIMM PC-12800,700000,memori
+V-GEN Memory PC 8GB DDR4 Long-DIMM PC-17000,800000,memori
+V-GEN Memory 8GB DDR3 PC-10600 ECC,1000000,memori
+V-GEN Memory 16GB DDR3 PC-12800 ECC REG,2500000,memori
+V-GEN Memory PC LRDIMM 32GB DDR3 PC-12800,6500000,memori
+TEAM Memory PC 2x 8GB DDR3 PC3-12800,1000000,memori
+TEAM ECC Reg Server RAM 8GB DDR4 PC4-17000,900000,memori
+iGame Geforce RTX 3060 Ti Ultra W OC LHR 8GB 256 Bit GDDR6,15200000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - Dual-V2 OC,11900000,vgacard	
+iGame Geforce RTX 3060 Ti bilibili E-sports Edition OC LHR 8GB 256 Bit GDDR6,15700000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - KO Gaming-V2 OC,12200000,vgacard	
+iGame Geforce RTX 3070 Ultra OC 8GB 256 Bit GDDR6,9200000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - TUF Gaming-V2 OC,12900000,vgacard
+Asus Geforce RTX 3060 12 GB 192 Bit GDDR6 - ROG Strix-V2 OC ,13400000,vgacard	
+iGame Geforce RTX 3070 Ultra OC-V 8GB 256 Bit GDDR6,16700000,vgacard
+Asus Geforce RTX 3060 Ti 8 GB 256 Bit GDDR6 - Dual Mini-V2,13800000,vgacard	
+iGame Geforce RTX 3070 Advanced OC-V LHR 8GB 256 Bit GDDR6,17100000,vgacard
+Asus Geforce RTX 3080 ROG Strix OC White Edition 10 GB 320 Bit GDDR6X,25900000,vgacard	
+Inno 3D Geforce GTX 1660 Twin X2 6 GB 192 Bit DDR5,6940000,vgacard
+Inno 3D Geforce GTX 1660 SUPER Twin X2 6 GB 192 Bit DDR6,9300000,vgacard
+Inno 3D Geforce GTX 1660 Ti Twin X2 6 GB 192 Bit DDR6,3930000,vgacard
+Asus Radeon RX 5600 XT Strix OC 6 GB 192 Bit DDR6,5950000,vgacard
+AMD Radeon Pro WX2100 2GB DDR5,2900000,vgacard	
+Gigabyte Geforce GTX 1660 SUPER OC 6 GB 192 Bit DDR6 (GV-N166SOC-6GD),8770000,vgacard
+AMD Radeon Pro WX3200 4GB DDR5,3550000,vgacard	
+Gigabyte Geforce GTX 1660 SUPER OC 6 GB 192 Bit DDR6 (OC GV-N166SOC-6GD),9900000,vgacard
+AMD Radeon Pro WX4100 4GB DDR5,5900000,vgacard
+HGST Travelstar 500GB [0J38065],599000,harddisk
+HGST Travelstar 1TB [0J22413],815000,harddisk
+HGST Deskstar NAS 3TB [0S03662],2228700,harddisk
+HGST Ultrastar 7K4000 4TB [0F14688],3270000,harddisk
+SEAGATE Desktop SSHD 4TB [ST4000DX001],2380000,harddisk
+SEAGATE Desktop SSHD 4TB [ST4000DX001],2585000,harddisk
+SEAGATE Barracuda 2TB [ST2000DM001],1135000,harddisk
+SEAGATE Surveillance 2TB [ST2000VX003],1195000,harddisk
+SEAGATE HDD 4TB [ST4000DM000],2300000,harddisk
+SEAGATE Surveillance 4TB [ST4000VX000],2355000,harddisk
+TOSHIBA Storage Device Internal 500GB [MQ01ABD050],495000,harddisk
+TOSHIBA Storage Device Internal 1TB [MQ01ABD100],679000,harddisk
+TOSHIBA Storage Device Internal 2TB [DT01ACA200],1011000,harddisk
+WD Blue 1TB [WD10EZRZ],745000,harddisk
+WD Scorpio Blue 1TB [WD10JPVX],780000,harddisk
+WD Caviar Black 2TB,1900000,harddisk
+WD Green 4TB [WD40EZRX],2090000,harddisk
+WD Black 4TB [WD4003FZEX],3260000,harddisk
+WD Purple 6TB [WD60PURX],5115000,harddisk
+WD Red 8TB [WD80EFZX],5115000,harddisk

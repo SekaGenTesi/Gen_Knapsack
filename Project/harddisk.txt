@@ -1,0 +1,20 @@
+HGST Travelstar 500GB [0J38065],599000,harddisk
+HGST Travelstar 1TB [0J22413],815000,harddisk
+HGST Deskstar NAS 3TB [0S03662],2228700,harddisk
+HGST Ultrastar 7K4000 4TB [0F14688],3270000,harddisk
+SEAGATE Desktop SSHD 4TB [ST4000DX001],2380000,harddisk
+SEAGATE Desktop SSHD 4TB [ST4000DX001],2585000,harddisk
+SEAGATE Barracuda 2TB [ST2000DM001],1135000,harddisk
+SEAGATE Surveillance 2TB [ST2000VX003],1195000,harddisk
+SEAGATE HDD 4TB [ST4000DM000],2300000,harddisk
+SEAGATE Surveillance 4TB [ST4000VX000],2355000,harddisk
+TOSHIBA Storage Device Internal 500GB [MQ01ABD050],495000,harddisk
+TOSHIBA Storage Device Internal 1TB [MQ01ABD100],679000,harddisk
+TOSHIBA Storage Device Internal 2TB [DT01ACA200],1011000,harddisk
+WD Blue 1TB [WD10EZRZ],745000,harddisk
+WD Scorpio Blue 1TB [WD10JPVX],780000,harddisk
+WD Caviar Black 2TB,1900000,harddisk
+WD Green 4TB [WD40EZRX],2090000,harddisk
+WD Black 4TB [WD4003FZEX],3260000,harddisk
+WD Purple 6TB [WD60PURX],5115000,harddisk
+WD Red 8TB [WD80EFZX],5115000,harddisk
