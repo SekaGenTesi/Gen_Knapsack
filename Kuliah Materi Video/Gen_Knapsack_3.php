@@ -284,6 +284,7 @@ class Crossover{
             //proses mengambil parent yang telah terpilih
             $parents1 = $this -> population[$listCrossover[0]];
             $parents2 = $this -> population[$listCrossover[1]];
+            
             echo"<br><br>";
             echo"Parents: <br>";
             foreach($parents1 as $gen){

@@ -2,9 +2,10 @@
 Class Parameters{ 
     const FILE_NAME = 'komponenPC.txt';
     const COLUMNS = ['item', 'price','jenis'];
-    const POPULATION_SIZE = 80;
-    const BUDGET =  24000000;
+    const POPULATION_SIZE = 5;
+    const BUDGET =  26000000;
     const STOPING_VALUE = 30000;
+    const CROSSOVERRATE = 0.8;
 }
 
 class Catalogue{
@@ -35,7 +36,7 @@ Class individu{
 
     function createRandomIndividu(){
         for ($i=0;$i<= $this->countNumberOfGen() - 1;$i++){
-            $ret[] = rand(0,1);
+            $ret[] = 0;
             
         }
         return $ret; 
@@ -57,11 +58,12 @@ class Population{
 class Fitness{
 
     function Highprice($listcomp){
+        
         $x=0;
         $max=$listcomp[0];
 
         for($i=0;$i<sizeof($listcomp)-1;$i++){
-           if($max > $listcomp[$x+1]['selectedPrice']){
+           if($max['selectedPrice'] < $listcomp[$x+1]['selectedPrice']){
                 $max = $listcomp[$x+1];
            }
         }
@@ -70,32 +72,34 @@ class Fitness{
     }
 
     function listbaru($listprocessor,$listmainboard,$listmemori,$listvgacard,$listharddisk){
-        
         for($i=0;$i<5;$i++){
             switch($i){
                 case 0:
-                    $newlist[]=$this->Highprice($listprocessor);
+                    $newlist[]=$listprocessor[array_rand($listprocessor)];
+                    //$newlist[]=$this->Highprice($listprocessor);
                     break;
                 case 1:
-                    $newlist[]=$this->Highprice($listmainboard);
+                    $newlist[]=$listmainboard[array_rand($listmainboard)];
+                    //$newlist[]=$this->Highprice($listmainboard);
                     break;
                 case 2:
-                    $newlist[]=$this->Highprice($listmemori);
+                    $newlist[]=$listmemori[array_rand($listmemori)];
+                    //$newlist[]=$this->Highprice($listmemori);
                     break;
                 case 3:
-                    $newlist[]=$this->Highprice($listvgacard);
+                    $newlist[]=$listvgacard[array_rand($listvgacard)];
+                    //$newlist[]=$this->Highprice($listvgacard);
                     break;
                 case 4:
-                    $newlist[]=$this->Highprice($listharddisk);
+                    $newlist[]=$listharddisk[array_rand($listharddisk)];
+                    //$newlist[]=$this->Highprice($listharddisk);
                     break;    
             }
         }
-
+        foreach($newlist as $key => $v){
+            $newlist[$key]['indexBinary']=1;
+        }
         return $newlist;
-        // foreach($newlist as $new){
-        //     echo'<br>';
-        //     print_r($new);
-        // }
     }
 
     function split($list){
@@ -103,6 +107,7 @@ class Fitness{
         foreach($list as $listIndividu){
             if(strpos($listIndividu['type'], "processor")!== false){
                 $listprocessor[]=[
+                    'indexBinary'=> $listIndividu['indexBinary'],
                     'selectedKey' => $listIndividu['selectedKey'],
                     'selectedPrice' => $listIndividu['selectedPrice'],
                     'type' => $listIndividu['type']
@@ -111,6 +116,7 @@ class Fitness{
             }
             if(strpos($listIndividu['type'], "mainboard")!== false){
                 $listmainboard[]=[
+                    'indexBinary'=> $listIndividu['indexBinary'],
                     'selectedKey' => $listIndividu['selectedKey'],
                     'selectedPrice' => $listIndividu['selectedPrice'],
                     'type' => $listIndividu['type']
@@ -118,6 +124,7 @@ class Fitness{
             }
             if(strpos($listIndividu['type'], "memori")!== false){
                 $listmemori[]=[
+                    'indexBinary'=> $listIndividu['indexBinary'],
                     'selectedKey' => $listIndividu['selectedKey'],
                     'selectedPrice' => $listIndividu['selectedPrice'],
                     'type' => $listIndividu['type']
@@ -125,6 +132,7 @@ class Fitness{
             }
             if(strpos($listIndividu['type'], "vgacard")!== false){
                 $listvgacard[]=[
+                    'indexBinary'=> $listIndividu['indexBinary'],
                     'selectedKey' => $listIndividu['selectedKey'],
                     'selectedPrice' => $listIndividu['selectedPrice'],
                     'type' => $listIndividu['type']
@@ -132,12 +140,14 @@ class Fitness{
             }
             if(strpos($listIndividu['type'], "harddisk")!== false){
                 $listharddisk[]=[
+                    'indexBinary'=> $listIndividu['indexBinary'],
                     'selectedKey' => $listIndividu['selectedKey'],
                     'selectedPrice' => $listIndividu['selectedPrice'],
                     'type' => $listIndividu['type']
                 ];
             }
         }
+        
 
         
         $listbaru = $this->listbaru($listprocessor,$listmainboard,$listmemori,$listvgacard,$listharddisk);
@@ -150,13 +160,13 @@ class Fitness{
     function selectingItem($individu){
         $catalogue = new Catalogue;
         foreach($individu as $individuKey => $binaryGen){
-            if($binaryGen === 1){
-                $ret[] = [
-                    'selectedKey' => $individuKey,
-                    'selectedPrice' => $catalogue -> product()[$individuKey]['price'],
-                    'type' => $catalogue -> product()[$individuKey]['jenis']
-                ]; 
-            }
+            //print_r($binaryGen);
+            $ret[] = [
+                'indexBinary'=> $binaryGen,
+                'selectedKey' => $individuKey,
+                'selectedPrice' => $catalogue -> product()[$individuKey]['price'],
+                'type' => $catalogue -> product()[$individuKey]['jenis']
+            ]; 
             // else if($binaryGen === 0){
             //     $ret[] = [
             //         'NotselectedKey' => $individuKey,
@@ -166,12 +176,17 @@ class Fitness{
             // }
             
         }
+        
         $ret = $this->split($ret);
-        foreach($ret as $new){
-            echo'<br>';
-            print_r($new);
-        }
+        // foreach($ret as $new){
+        //     echo'<br>';
+        //     print_r($new);
+        // }
         return $ret;
+    }
+
+    function listIndividuBaru($individu){
+        return $this -> selectingItem($individu);
     }
 
     function calculateFitnessValue($individu){
@@ -242,7 +257,30 @@ class Fitness{
         }
     }
 
-
+    function createUpdatePopulation($population,$listNew){
+        $catalogue = new Catalogue;
+        
+        $ret = $population;
+        echo '<br>';
+        echo '<br>';        
+        print_r(count($listNew));
+        echo '<br>';
+        echo '<br>';    
+        for($x=0;$x<count($ret);$x++){
+            for($y=0;$y<count($ret[$x]);$y++){
+                foreach($listNew as $list){
+                    if($y == $list['selectedKey']){
+                        $ret[$x][$y] = 1;
+                    }
+                }
+            }
+            
+        }
+        return $ret;
+        
+        
+       
+    }
    
     function fitnessEvaluation($population){
         $catalogue = new Catalogue;
@@ -254,12 +292,17 @@ class Fitness{
                 echo '<br>';
             }
             //sudah
-            echo'<br>';
-
-            //$splitlistindividu = $this->splitIndividu($listOfIndividu);
+            $listNew = $this -> listIndividuBaru($listOfIndividu);
             $fitnessValue = $this->calculateFitnessValue($listOfIndividu); 
+            $newPopulation= $this->createUpdatePopulation($population,$listNew);
+            //print_r($newPopulation);
+            // foreach($listNew as $individu){
+            //     echo'<br>';
+            //     print_r($individu);
+            // }
+            //exit();
             //$numberOfSelectingItem = $this -> countSelectedItem($listOfIndividu);
-            $numberOfSelectingItem = 0;
+            $numberOfSelectingItem = 5;
 
             
             echo '<br><br>';
@@ -279,7 +322,9 @@ class Fitness{
                 echo '(Not Fit)';
             }
            
+            
             echo '<p>';
+            
         }
 
         if($this -> isFound($fits)){
@@ -288,15 +333,224 @@ class Fitness{
         else{
             echo'>> next generation';
         }
-       
+
+        // print_r($listNew);
+        return $newPopulation;
     }
 }
+
+class Crossover{
+    public $newPopulation;
     
+    function __construct($newPopulation){
+        $this -> newPopulation = $newPopulation;
+    }
+
+    function randomZerotoOne(){
+        return (float) rand() / (float) getrandmax();
+    }
+ 
+    function generateCrossover(){
+        for($i = 0;$i<= Parameters::POPULATION_SIZE-1;$i++){
+            $randomZerotoOne = $this -> randomZerotoOne();
+            if($randomZerotoOne < Parameters::CROSSOVERRATE){ 
+                $parents[$i] = $randomZerotoOne;
+
+            }
+        }
+        foreach (array_keys($parents) as $key) {
+            foreach (array_keys($parents) as $subkey) {
+                if($key !== $subkey){
+                    $ret[] = [$key,$subkey];
+                }
+                
+            }
+            array_shift($parents);
+        }
+        return $ret; 
+    }
+
+    function offspring($parents1,$parents2,$cutPointIndex,$offspring){
+        $lengthOfgen = new Individu;
+
+        if($offspring === 1){
+            for ($i=0;$i<=$lengthOfgen->countNumberOfGen()-1;$i++){
+                if($i <= $cutPointIndex){
+                    $ret[] = $parents1[$i];
+                }
+                if($i > $cutPointIndex){
+                    $ret[] = $parents2[$i];
+                }
+            }
+             
+        }
+
+        if($offspring === 2){
+            for ($i=0;$i<=$lengthOfgen->countNumberOfGen()-1;$i++){
+                if($i <= $cutPointIndex){
+                    $ret[] = $parents2[$i];
+                }
+                if($i > $cutPointIndex){
+                    $ret[] = $parents1[$i];
+                }
+            }
+           
+        }
+        return $ret;
+    }
+
+    function cutPointRandom(){
+        $lengthOfgen = new Individu; 
+        return rand(0,$lengthOfgen->countNumberOfGen()-1);
+    }
+
+    function crossover(){
+        $cutPointIndex = $this->cutPointRandom();
+        echo"<br> Cut Point Index: ";
+        echo $cutPointIndex;
+        foreach($this->generateCrossover() as $listCrossover){
+            $parents1 = $this -> newPopulation[$listCrossover[0]];
+            $parents2 = $this -> newPopulation[$listCrossover[1]];
+            echo"<br><br>";
+            echo"Parents: <br>";
+        
+            foreach($parents1 as $gen){
+                echo $gen;
+            }
+            echo'><';
+            foreach($parents2 as $gen){
+                echo $gen;
+            }
+            echo"<br>";
+            echo"Offspring Index: <br >";
+            $offspring1 = $this->offspring($parents1,$parents2,$cutPointIndex,1);
+            $offspring2 = $this->offspring($parents1,$parents2,$cutPointIndex,2);
+            foreach($offspring1 as $gen){
+                echo $gen;
+            }
+            echo'><';
+            foreach($offspring2  as $gen){
+
+                echo $gen;
+            }
+        }
+        
+    } 
+
+}
+
+
+class Randomizer{
+    static function getRandomIndexOfGen(){
+        return rand(0,(new Individu())->countNumberOfGen()-1);
+    }
+
+    static function getRandomIndexOfIndividu(){
+        return rand(0,Parameters::POPULATION_SIZE - 1);
+    }
+}
+
+class Mutation{
+    
+    function __construct($population){
+        $this->population = $population;
+    }
+
+    function calculateMutationRate(){
+       
+        return 0.2;
+    }
+
+    function calculateNumOfMutation(){
+        return round($this -> calculateMutationRate() * Parameters::POPULATION_SIZE);
+    }
+
+    function isMutation(){ 
+        if($this->calculateNumOfMutation()>0){ 
+            return TRUE;
+        }
+    }
+
+    function generateMutation($valueOfGen){
+        if($valueOfGen===0){ 
+            return 1;
+        }
+        else{
+            return 0;
+        }
+    }
+
+    function mutation(){
+        if($this->isMutation()){ 
+
+            for($i=0 ; $i <= $this->calculateNumOfMutation()-1;$i++){
+                
+                $indexOfIndividu = Randomizer::getRandomIndexOfIndividu();
+                $indexofGen = Randomizer::getRandomIndexOfGen(); 
+                $selectedindividu = $this->population[$indexOfIndividu]; 
+
+
+                echo"<br> Individu ke-";
+                print_r($indexOfIndividu);
+                echo"<br> Before Mutation: <br>";
+                print_r($selectedindividu);
+
+                echo"<br> Letak Gen yang dimutasi <br>";
+                print_r($indexofGen);
+
+                $valueOfGen = $selectedindividu[$indexofGen];
+                $mutatedGen = $this->generateMutation($valueOfGen);
+                $selectedindividu[$indexofGen] = $mutatedGen;
+
+                echo"<br> After Mutation: <br>";
+                print_r($selectedindividu);
+                echo"<br>";
+
+                $ret[] = $selectedindividu;
+            }
+            return $ret;
+        }
+
+    }
+
+}
 
 $initialPopulation = new Population; 
 $population = $initialPopulation -> createRandomPopulation();
 
-$fitness = new Fitness;
-$fitness -> fitnessEvaluation($population);
 
+print_r($population);
+$Fitness = new Fitness;
+$newPopulation = $Fitness -> fitnessEvaluation($population);
+
+// foreach($newPopulation as $individukey => $listOfIndividu){
+//     print_r($listOfIndividu);
+//     echo'<br>';
+//     echo'<br>';
+//     echo'<br>';
+// }
+print_r($newPopulation);
+$crossover = new Crossover($newPopulation); 
+$crossoverOffspring= $crossover->crossover();
+
+echo'Crossover Offsrping: <br>';
+print_r($crossoverOffspring);
+
+echo"<p></p>";
+
+//(new Mutation($population))->mutation();
+$mutation = new Mutation($newPopulation);
+if($mutation->mutation()){
+
+    $mutationOffSprings = $mutation->mutation();
+    echo '<br><br>Mutation offspring <br>';
+    print_r($mutationOffSprings);
+    echo"<p></p>";
+    foreach($mutationOffSprings as $mutationOffSprings){
+        $crossoverOffspring[] = $mutationOffSprings;
+    }
+}
+
+echo 'Mutation Offsprings <br>';
+print_r($crossoverOffspring);
 ?>
