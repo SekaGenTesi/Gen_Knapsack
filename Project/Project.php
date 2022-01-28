@@ -638,9 +638,10 @@ class Fitness2{
 }
 
 class Selection{
-    //selection adalah menyeleksi individu individu terbaik yang merupakan hasil kombinasi dari populasi awal
+    //selection adalah menyeleksi individu individu terbaik yang merupakan hasil kombinasi dari populasi awal NIM 1900018294
     //dengan populasi offspring atau gabungan dari croossover dan mutasi 
     //proses seleksi digunakan teknik elitsm
+    
 
     function __construct($population, $combinedOffsprings){
         //mengambail data construct pada pemanggilan fungsi
@@ -651,7 +652,7 @@ class Selection{
     function createTemporaryPopulation(){
         //proses membuat populasi sementara atau temporary population
         foreach($this-> combinedOffsprings as $offspring){
-            //mengambil data hasil offspring yang akan dimasukan pada variabel population  
+            //mengambil data hasil offspring yang akan dimasukan pada variabel population NIM 1900018294 
             $this->population[] = $offspring;
         }
 
@@ -672,7 +673,7 @@ class Selection{
        //Mndapatkan nilai return dari fungsi createTemporaryPopulation()
 
         $fitness = new Fitness;
-        //setiap data array pada populasi sementara akan dihitung fitness valuenya
+        //setiap data array pada populasi sementara akan dihitung fitness valuenya NIM 1900018294
         foreach ($tempPopulation as $key => $individu){
             $fitnessValue = $fitness->calculateFitnessValue($individu);
             //jika populasi tersebut fit maka akan dimasukan ke array populasi sementara yang fit
@@ -687,7 +688,7 @@ class Selection{
         //proses dibawah ini mengurutkan array dari nilai fitness value dari yang terbesar
         rsort($fitTemporaryPopulation);
 
-        //proses mengambil individu dari populasi sementara sebesar jumlah individu populasi awal
+        //proses mengambil individu dari populasi sementara sebesar jumlah individu populasi awal Nama: Brilly Jalu Kumara Biseka
         $fitTemporaryPopulation = array_slice($fitTemporaryPopulation,0,Parameters::POPULATION_SIZE);
         foreach($fitTemporaryPopulation as $key => $val){
             echo"<br>";
