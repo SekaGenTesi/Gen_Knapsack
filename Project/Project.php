@@ -2,8 +2,8 @@
 Class Parameters{ 
     const FILE_NAME = 'komponenPC.txt';
     const COLUMNS = ['item', 'price','jenis'];
-    const POPULATION_SIZE = 5;
-    const BUDGET =  26000000;
+    const POPULATION_SIZE = 10;
+    const BUDGET =  30000000;
     const STOPING_VALUE = 30000;
     const CROSSOVERRATE = 0.8;
 }
@@ -515,6 +515,206 @@ class Mutation{
 
 }
 
+class Fitness2{
+    function selectingItem($individu){
+        $catalogue = new Catalogue;
+        foreach($individu as $individuKey => $binaryGen){
+            if($binaryGen === 1){
+                $ret[] = [
+                    'selectedKey' => $individuKey,
+                    'selectedPrice' => $catalogue -> product()[$individuKey]['price']
+                ]; 
+            }
+            
+        }
+        return $ret;
+    }
+
+    function calculateFitnessValue($individu){
+        return array_sum(array_column($this -> selectingItem($individu),'selectedPrice'));
+       
+    }
+
+    function countSelectedItem($individu){
+        return count($this->selectingItem($individu));
+    }
+
+    function searchBestIndividu($fits,$maxItem,$numberOfIndividuMaxItem){
+        if($numberOfIndividuMaxItem === 1){
+            $index = array_search($maxItem, array_column($fits,'numberOfSelectedItem'));
+            return $fits[$index];
+            echo'<br>';
+        }
+        else{ 
+            foreach($fits as $key => $val){
+                if($val['numberOfSelectedItem'] === $maxItem){
+                    echo $key.' '.$val['fitnessValue'].'<br>';
+                    $ret[] =[
+                        'individuKey' => $key,
+                        'fitnessValue' => $val['fitnessValue']
+
+                    ];
+                }
+            }
+            if(count(array_unique(array_column($ret, 'fitnessValue'))) === 1){
+                $index = rand(0, count($ret) - 1);
+            }
+            else{
+                $max = max(array_column($ret,'fitnessValue'));
+                $index = array_search($max,array_column($ret,'fitnessValue'));
+            }
+            echo '<br>Hasil: ';
+            // print_r($ret[$index]);
+            return $ret[$index]; 
+        }
+    }
+
+    function isFound($fits){
+        $countedMaxItem = array_count_values(array_column($fits,'numberOfSelectedItem'));
+        //print_r($countedMaxItem);
+        echo '<br>';
+        $maxItem = max(array_keys($countedMaxItem));
+        echo $maxItem;
+        echo '<br>';
+        echo $countedMaxItem[$maxItem];
+        echo '<br>';
+        $numberOfIndividuMaxItem = $countedMaxItem[$maxItem];
+
+        $bestFitnessValue = $this -> searchBestIndividu($fits,$maxItem,$numberOfIndividuMaxItem)['fitnessValue'];
+        //print_r($bestFitnessValue)['fitnessValue'];
+        echo '<br>Best fitness value: '.$bestFitnessValue;
+ 
+ 
+        $residual = Parameters::BUDGET - $bestFitnessValue;
+        echo 'Residual: '. $residual;
+
+        if($residual <= Parameters::STOPING_VALUE && $residual > 0){
+            return True;
+        }
+    }
+
+    function isFit($fitnessValue){
+        if($fitnessValue <= Parameters::BUDGET){
+            return True;
+        }
+    }
+
+    function fitnessEvaluation($population){
+        $catalogue = new Catalogue;
+        foreach($population as $listOfindividuKey => $listOfIndividu){
+            echo 'Individu-'. $listOfindividuKey. '<br>';
+            // foreach ($listOfIndividu as $individuKey => $binaryGen){
+            //     echo $binaryGen.'&nbsp;&nbsp';
+            //     //print_r($catalogue -> product()[$individuKey]);
+            //     echo '<br>';
+            // }
+            $fitnessValue = $this->calculateFitnessValue($listOfIndividu); 
+            $numberOfSelectingItem = $this -> countSelectedItem($listOfIndividu);
+            echo 'Max Item: '.$numberOfSelectingItem;
+            echo  ' Fitness Value :'. $fitnessValue;
+            if($this -> isFit($fitnessValue)){
+                echo '(Fit)';
+                $fits[] = [
+                    'selectedIndividuKey' => $listOfindividuKey,
+                    'numberOfSelectedItem' => $numberOfSelectingItem,
+                    'fitnessValue' => $fitnessValue
+                ];
+                //print_r($fits); 
+            }
+            else{
+                echo '(Not Fit)';
+            }
+           
+            echo '<p>';
+        }
+        if($this -> isFound($fits)){
+            echo ' Found';
+        }
+        else{
+            echo'>> next generation';
+        }
+       
+    }
+}
+
+class Selection{
+    //selection adalah menyeleksi individu individu terbaik yang merupakan hasil kombinasi dari populasi awal
+    //dengan populasi offspring atau gabungan dari croossover dan mutasi 
+    //proses seleksi digunakan teknik elitsm
+
+    function __construct($population, $combinedOffsprings){
+        //mengambail data construct pada pemanggilan fungsi
+        $this -> population = $population;
+        $this -> combinedOffsprings = $combinedOffsprings;
+    }
+
+    function createTemporaryPopulation(){
+        //proses membuat populasi sementara atau temporary population
+        foreach($this-> combinedOffsprings as $offspring){
+            //mengambil data hasil offspring yang akan dimasukan pada variabel population  
+            $this->population[] = $offspring;
+        }
+
+        //mereturn array populasi
+        return $this->population;
+    }
+
+    function getVariabelValue($basePopulation, $fitTemporaryPopulation){
+        foreach($fitTemporaryPopulation as $val){
+            //proses menginputkan populasi sementara yang fit ke populasi bari hasil seleksi
+            $ret[] = $basePopulation[$val[1]];
+        }
+        return $ret;
+    }
+
+    function sortFitTemporaryPopulation(){
+        $tempPopulation = $this->createTemporaryPopulation();
+       //Mndapatkan nilai return dari fungsi createTemporaryPopulation()
+
+        $fitness = new Fitness;
+        //setiap data array pada populasi sementara akan dihitung fitness valuenya
+        foreach ($tempPopulation as $key => $individu){
+            $fitnessValue = $fitness->calculateFitnessValue($individu);
+            //jika populasi tersebut fit maka akan dimasukan ke array populasi sementara yang fit
+            if($fitness->isFit($fitnessValue)){
+                $fitTemporaryPopulation[] = [
+                    $fitnessValue,
+                    $key
+                ];
+            }
+        }
+
+        //proses dibawah ini mengurutkan array dari nilai fitness value dari yang terbesar
+        rsort($fitTemporaryPopulation);
+
+        //proses mengambil individu dari populasi sementara sebesar jumlah individu populasi awal
+        $fitTemporaryPopulation = array_slice($fitTemporaryPopulation,0,Parameters::POPULATION_SIZE);
+        foreach($fitTemporaryPopulation as $key => $val){
+            echo"<br>";
+            print_r($val);
+        }
+
+        //mereturn hasil fungsi getVariabelValue
+        return $this->getVariabelValue($tempPopulation,$fitTemporaryPopulation);
+    }
+
+    function selectingIndividus(){
+        $selected =  $this->sortFitTemporaryPopulation();
+        echo'<p></p>';
+        $x=1;
+        echo"<br> Daftar individu yang ada pada Populasi baru:";
+        foreach ($selected as $key => $val){
+            echo'<br>';echo'<br>';
+            echo $x.'. ';
+            print_r($val);
+            $x++;
+        }
+       
+    }
+
+
+}
+
 $initialPopulation = new Population; 
 $population = $initialPopulation -> createRandomPopulation();
 
@@ -553,4 +753,20 @@ if($mutation->mutation()){
 
 echo 'Mutation Offsprings <br>';
 print_r($crossoverOffspring);
+
+
+$fitness = new Fitness2;
+$fitness->fitnessEvaluation($crossoverOffspring);
+echo'<br>';
+echo'<br>';
+echo"Proses diatas adalah proses pengecekan fitness pada populasi crossover dan mutation: ";
+
+echo'<br>';
+echo'<br>';
+
+$selection = new Selection($population,$crossoverOffspring);
+$selection -> selectingIndividus();
+
+
 ?>
+
